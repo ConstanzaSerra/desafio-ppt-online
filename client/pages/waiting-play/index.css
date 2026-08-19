@@ -1,0 +1,36 @@
+body {
+  font-family: "Cutive", serif;
+}
+
+.textPlay {
+  max-width: 317px;
+  font-size: 25px;
+  max-height: 240px;
+  margin: 30px;
+  font-weight: 600;
+  text-align: center;
+  color: black;
+}
+
+my-button {
+  margin: 5px;
+}
+
+.room-id {
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.play {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plays {
+  margin: 100px 20px 20px 20px; /* Más margen arriba para bajar las manos */
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Para separar las manos */
+}
