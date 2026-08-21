@@ -124,7 +124,9 @@ const state = {
       })
       .then((data) => {
         cs.user = user;
-        cs.userId = data.id;
+        // Guardo el objeto completo { id, new } igual que reloadUser,
+        // porque en todos lados se lee cs.userId.id
+        cs.userId = data;
         this.setState(cs);
         // Guardar en localStorage
         localStorage.setItem("users-ppt.nombre", user);

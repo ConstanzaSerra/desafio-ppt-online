@@ -73,6 +73,12 @@ app.post("/rooms", (req: Request, res: Response) => {
   const { userId } = req.body;
   console.log("userId recibido en backend:", userId);
 
+  if (typeof userId !== "string" || !userId) {
+    return res
+      .status(400)
+      .json({ message: "userId es requerido y debe ser un string." });
+  }
+
   userCollection
     .doc(userId)
     .get()
