@@ -34,9 +34,20 @@ class GameHeader extends HTMLElement {
               display: flex;
               justify-content: space-between;
               align-items: flex-start;
+              gap: 16px;
               font-family: "Cutive", serif;
               font-size: 18px;
               padding: 10px 20px;
+              box-sizing: border-box;
+            }
+
+            .players {
+              min-width: 0;          /* permite que el texto se corte si no entra */
+              overflow-wrap: anywhere;
+            }
+
+            .players div {
+              line-height: 1.2;
             }
 
             .me {
@@ -51,6 +62,7 @@ class GameHeader extends HTMLElement {
 
             .room {
               text-align: center;
+              flex-shrink: 0;        /* la sala nunca se aplasta */
             }
 
             .room-label {

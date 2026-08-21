@@ -9,25 +9,39 @@
   justify-content: center;
 }
 
+.result-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .results-table {
   border: 7px solid;
   border-radius: 10px;
   background-color: white;
-  width: 200px;
-  height: 200px;
+  min-width: 200px;
+  max-width: 90vw;          /* nunca más ancho que la pantalla */
+  height: auto;             /* crece si los nombres son largos */
+  padding: 10px 16px 16px;
+  box-sizing: border-box;
   font-family: "Odibee Sans", sans-serif;
 }
 
 .score {
-  font-size: 55px;
-  justify-self: center;
-  margin-top: 10px;
+  font-size: 45px;
+  text-align: center;
+  margin-top: 0;
 }
 
 .score__values {
-  font-size: 45px;
-  justify-items: right;
-  margin-right: 10px;
+  font-size: 30px;
+  line-height: 1.3;
+}
+
+.score__values div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  overflow-wrap: anywhere;  /* corta nombres largos en vez de desbordar */
 }
 
 .number {
