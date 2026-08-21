@@ -24,8 +24,7 @@
     "dev:front": "parcel serve ./client/index.html --no-source-maps",
     "dev:api": "nodemon --watch ./server/index.ts --exec tsx ./server/index.ts",
     "build:front": "parcel build ./client/index.html",
-    "build:api": "tsc ./server/index.ts",
-    "build": "yarn build:front && yarn build:api",
-    "start": "node ./server/index.js"
+    "build": "yarn build:front",
+    "start": "tsx ./server/index.ts"
   }
 }

@@ -307,7 +307,8 @@ app.get("/env", (req: Request, res: Response) => {
 });
 
 app.get("/*", (req: Request, res: Response) => {
-  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+  // dist está en la raíz del proyecto, no dentro de /server
+  res.sendFile(path.resolve(process.cwd(), "dist", "index.html"));
 });
 
 app.listen(port, () => {
