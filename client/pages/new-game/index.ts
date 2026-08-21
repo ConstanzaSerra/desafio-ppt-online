@@ -33,15 +33,19 @@ export function initNewGame(params: any) {
 
   startGameButton?.addEventListener("click", async (e) => {
     e.preventDefault();
-    const cs = state.getState();
-    if(!cs.userId){ //es un nuevo usuario
-      await state.setUser(userNameInput.value)
+    const nombre = (userNameInput.value || "").trim();
+    if (!nombre) {
+      alert("Ingresá tu nombre para empezar");
+      return;
     }
+
+    // Busca el usuario y lo crea si no existe (sirve para nombre nuevo o repetido)
+    await state.ensureUser(nombre);
+
     state.leaveRoom(); // me desengancho de la sala anterior antes de crear una nueva
     await state.crearSala();
     
-    console.log("Room Id creado: " + cs.roomId);
-    console.log("Se hizo clic en Empezar");
+    console.log("Room Id creado: " + state.getState().roomId);
     params.goTo("/waiting-room"); // Redirige a la sala de espera
   });
 

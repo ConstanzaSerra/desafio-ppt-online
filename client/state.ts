@@ -111,6 +111,35 @@ const state = {
       });
   },
 
+  // Resuelve el usuario sin saber de antemano si ya existe:
+  // primero lo busca en Firestore y, si no está, lo crea.
+  ensureUser(user: string) {
+    const cs = this.getState();
+
+    return fetch(API_BASE_URL + "/auth", {
+      method: "post",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ nombre: user }),
+    })
+      .then((res) => {
+        if (res.ok) return res.json(); // ya existía
+
+        // 404: todavía no existe, lo doy de alta
+        return fetch(API_BASE_URL + "/signup", {
+          method: "post",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ nombre: user }),
+        }).then((r) => r.json());
+      })
+      .then((data) => {
+        cs.user = user;
+        cs.userId = data; // { id } o { id, new }
+        this.setState(cs);
+        localStorage.setItem("users-ppt.nombre", user);
+        return data;
+      });
+  },
+
   setUser(user: string) {
     const cs = this.getState();
     //cuando se guarda el usuario por primera vez
